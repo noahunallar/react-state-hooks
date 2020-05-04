@@ -22,7 +22,7 @@ const initialTodos = [
     },
     {
         id: uuid(),
-        task: 'Connect Firesbase',
+        task: 'Connect Firebase',
         complete: false,
     },
     {
@@ -47,7 +47,7 @@ const App = ()=> {
 
     const handleChangeCheckbox = id => {
         setTodos(
-            todos.map(todos=> {
+            todos.map(todo=> {
                 if(todo.id===id){
                     return {...todo, complete: !todo.complete};
                 } else{
@@ -105,7 +105,7 @@ const initialTodos = [
     },
     {
         id: uuid(),
-        task: 'Connect Firesbase',
+        task: 'Connect Firebase',
         complete: false,
     },
     {
@@ -241,7 +241,7 @@ Now you can use the reducer function in a useReducer hook. It takes the reducer 
 
 Everytime a button is clicked an action with an action type is dispatched for the reducer function. The reducer function then computes the new state. Often the current state from the reducer function's argument is used to compute the new state with the incoming action.
 
-Now everything that has been managed by useState for our todo items is managed by useReducer now. The reducer describes what happens for each state transition and how this happnes by moving the implementation details in there.
+Now everything that has been managed by useState for our todo items is managed by useReducer now. The reducer describes what happens for each state transition and how this happens by moving the implementation details in there.
 
 ## useContext
 
@@ -358,11 +358,11 @@ const Filter = ({dispatch}) => {
 
 const TodoList = ({todos}) => {
     <ul>
-        {todos.map(todo=> <TodoItem key={todo.id} todo={todo} />)}
+        {todos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
     </ul>
 };
 
-const TodoITem = ({todo}) => {
+const TodoItem = ({todo}) => {
     const dispatch = useContext(TodoContext);
     const handleChange = () =>  dispatch({
       type: todo.complete ? 'UNDO_TODO' : 'DO_TODO',
@@ -408,7 +408,7 @@ export default App;
 
 ```
 
-In the end, we have a component tree whereas each component receives state as props dispatch functions to alter the state. Most of the state is managed by the parent App component. That's it for the refactoring. Now, the component tree isn't very deep and it isn't difficult to pass props down. However, in larger applications it can be a burden to pass down everything several levels. That's why React came up with the idea of the context container. First, we create the context, second, the app can use the conte's Provider method to pass implicitly a value down the component tree.
+In the end, we have a component tree whereas each component receives state as props dispatch functions to alter the state. Most of the state is managed by the parent App component. That's it for the refactoring. Now, the component tree isn't very deep and it isn't difficult to pass props down. However, in larger applications it can be a burden to pass down everything several levels. That's why React came up with the idea of the context container. First, we create the context, second, the app can use the context Provider method to pass implicitly a value down the component tree.
 
 ## Bonus
 
